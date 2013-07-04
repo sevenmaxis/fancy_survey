@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <b>Second name:</b>
+  <%= @user.second_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Birthday:</b>
+  <%= @user.birthday %>
+</p>
+
+<p>
+  <b>Shoe size:</b>
+  <%= @user.shoe_size %>
+</p>
+
+<p>
+  <b>Ice cream:</b>
+  <%= @user.ice_cream %>
+</p>
+
+<p>
+  <b>Superhero:</b>
+  <%= @user.superhero %>
+</p>
+
+<p>
+  <b>Movie star:</b>
+  <%= @user.movie_star %>
+</p>
+
+<p>
+  <b>World end:</b>
+  <%= @user.world_end %>
+</p>
+
+<p>
+  <b>Super bowl winner:</b>
+  <%= @user.super_bowl_winner %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
