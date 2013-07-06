@@ -3,7 +3,9 @@ window.FancySurvey =
   Collections: {}
   Views: {}
   Routers: {}
-  initialize: -> 
+  init: -> 
+    window.router = new FancySurvey.Routers.User
 
 $(document).ready ->
-  FancySurvey.initialize()
+  FancySurvey.init()
+  
