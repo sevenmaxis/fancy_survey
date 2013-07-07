@@ -1,16 +1,16 @@
 class FancySurvey.Models.User extends Backbone.Model
   url: '/users'
 
-  defaults:
-    first_name: 'test'
-    second_name: ''
-    birthday: ''
-    shoe_size: ''
-    ice_cream: ''
-    superhero: ''
-    movie_star: ''
-    world_end: ''
-    super_bowl_winner: ''
+  schema:
+    first_name: "Text"
+    second_name: "Text"
+    birthday: "Date"
+    show_size: "Text"
+    ice_cream: "Text"
+    superhero: "Text"
+    movie_star: "Text"
+    world_end: "Date"
+    super_bowl_winner: "Text"
 
   initialize: ->
 

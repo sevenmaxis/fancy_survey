@@ -5,6 +5,5 @@
 # spec/javascripts/*_spec.js.erb
 # IT IS UNLIKELY THAT YOU WILL NEED TO CHANGE THIS FILE
 #
-#= require jquery
+#= require application
 #= require_tree ./
-#= require_tree ../../app/assets/javascripts

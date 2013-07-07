@@ -4,26 +4,26 @@ describe "routers/Users", ->
     expect(FancySurvey.Routers.User).toBeDefined()
 
   it "can be instantiated", ->
-    router = new FancySurvey.Routers.User()
+    router = new FancySurvey.Routers.User
     expect(router).not.toBeNull()
 
   describe "initialize", ->
     beforeEach ->
-      @router = new FancySurvey.Router.User()
+      @router = new FancySurvey.Routers.User
 
     it "should create a user", ->
       expect(@router.user).toBeDefined()
 
   describe "routes", ->
     beforeEach ->
-      @router = new FancySurvey.Routers.User()
+      @router = new FancySurvey.Routers.User
       Backbone.history.start()
 
     afterEach ->
       Backbone.history.stop()
 
     it 'should be defined', ->
-      expect(@router.routers).toBeDefined()
+      expect(@router.routes).toBeDefined()
 
     it 'should have correct routes', ->
       expect(@router.routes['']).toBeDefined()
@@ -35,7 +35,7 @@ describe "routers/Users", ->
 
   describe "actions", ->
     beforeEach ->
-      @router = new FancySurvey.Routers.User()
+      @router = new FancySurvey.Routers.User
       Backbone.history.start()
 
     afterEach ->

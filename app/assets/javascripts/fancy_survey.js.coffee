@@ -1,9 +1,9 @@
 window.FancySurvey =
   Models: {}
   Collections: {}
-  Views: {}
+  Views: {User:{}}
   Routers: {}
-  init: -> 
+  init: ->
     window.router = new FancySurvey.Routers.User
 
 $(document).ready ->

@@ -4,22 +4,21 @@ class FancySurvey.Routers.User extends Backbone.Router
     "survey": "survey"
     "result": "result"
 
-  views: {}
-
   initialize: ->
-    @user = new FancySurvey.Models.User()
+    @user = new FancySurvey.Models.User
+    #@timer_view = FancySurvey.Views.
 
   registration: ->
     view = FancySurvey.Views.User.Registration(model: @user)
-    $("#main").html(@view.render().el)
+    $("#main").html(view.render().el)
     view # for test purpose
 
   survey: ->
     view = FancySurvey.Views.User.Survey(model: @user)
-    $('#main').html(@view.render().el)
+    $('#main').html(view.render().el)
     view # for test purpose
 
   result: ->
     view = FancySurvey.Views.User.Result(model: @user)
-    $('#main').html(@view.render().el)
+    $('#main').html(view.render().el)
     view # for test purpose
