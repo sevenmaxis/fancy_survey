@@ -1,7 +1,7 @@
 window.FancySurvey =
   Models: {}
   Collections: {}
-  Views: {User:{}}
+  Views: {User: {}}
   Routers: {}
   init: ->
     window.router = new FancySurvey.Routers.User

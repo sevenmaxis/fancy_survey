@@ -15,7 +15,7 @@ describe 'FancySurvey.Views.User.Registration', ->
 
     it "triggers event", ->
       spyOn(registration, 'save')
-      registration.delegateEvents();
+      registration.delegateEvents()
       $('.save').click()
       expect(registration.save).toHaveBeenCalled()
 
