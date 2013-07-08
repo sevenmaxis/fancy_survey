@@ -123,5 +123,10 @@
     </select>
   </div>
 
+  <div class="field">
+    <label>SHOW SIZE</label>
+    <input type="text" id="email" />
+  </div>
+
   <button class="save">Save</button>
 </div>

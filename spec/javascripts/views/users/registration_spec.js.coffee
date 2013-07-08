@@ -8,8 +8,8 @@ describe 'FancySurvey.Views.User.Registration', ->
     registration = new FancySurvey.Views.User.Registration({ model: model, timer: timer_view })
 
   describe "rendering", ->
-    it 'fills with 4 fields', ->
-      expect($('.field').length).toEqual 4
+    it 'fills with 5 fields', ->
+      expect($('.field').length).toEqual 5
 
   describe "#save", ->
 
