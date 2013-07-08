@@ -179,6 +179,7 @@ DEPENDENCIES
   backbone-forms-rails
   backbone-on-rails
   coffee-rails (~> 3.2.1)
+  eco
   factory_girl_rails
   guard-spin
   jasminerice

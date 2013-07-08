@@ -15,6 +15,7 @@ group :assets do
   gem 'jquery-rails'
   gem 'uglifier', '>= 1.0.3'
   gem 'backbone-on-rails'
+  gem 'eco'
 end
 
 group :development, :test do
