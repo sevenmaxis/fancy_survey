@@ -23,11 +23,11 @@ describe 'FancySurvey.Views.User.Registration', ->
       spyOn(registration.timer, 'expired').andReturn(false)
       spyOn(registration.model, 'save')
       $('.save').click()
-      expect(registration.model.save).not.toHaveBeenCalled()
+      expect(registration.model.save).toHaveBeenCalled()
 
     it "not save model if expired", ->
       spyOn(registration.timer, 'expired').andReturn(true)
       spyOn(registration.model, 'save')
       $('.save').click()
-      expect(registration.model.save).toHaveBeenCalled()
+      expect(registration.model.save).not.toHaveBeenCalled()
 

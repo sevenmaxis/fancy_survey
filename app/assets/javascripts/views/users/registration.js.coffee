@@ -9,7 +9,7 @@ class FancySurvey.Views.User.Registration extends Backbone.View
     @timer = options.timer
 
   save: ->
-    if @timer.expired()
+    if not @timer.expired()
       @model.save {},
         error: (model, response) ->
           console.log response.responseText
