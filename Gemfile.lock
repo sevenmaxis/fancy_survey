@@ -1,3 +1,14 @@
+GIT
+  remote: git@github.com:sevenmaxis/jquery-cookie-rails.git
+  revision: 9af75c73e4a2bd0292fedf48c8262645563cc461
+  branch: use_submodule
+  specs:
+    jquery-cookie-rails (1.3.1)
+      jquery-rails (>= 2.0, < 4.0)
+      railties (>= 3.2.0, < 5.0)
+      thor (~> 0.14)
+      version (~> 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -171,6 +182,7 @@ GEM
     uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    version (1.0.0)
 
 PLATFORMS
   ruby
@@ -183,6 +195,7 @@ DEPENDENCIES
   factory_girl_rails
   guard-spin
   jasminerice
+  jquery-cookie-rails!
   jquery-rails
   rails (= 3.2.13)
   rspec-rails

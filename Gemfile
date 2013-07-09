@@ -5,6 +5,9 @@ gem 'strong_parameters'
 gem 'sqlite3'
 gem 'thin'
 gem 'backbone-forms-rails'
+gem 'jquery-cookie-rails',
+    :git => 'git@github.com:sevenmaxis/jquery-cookie-rails.git',
+    :branch => 'use_submodule'
 
 
 # Gems used only for assets and not required

@@ -42,9 +42,9 @@ describe "routers/Users", ->
       Backbone.history.stop()
 
     it "should have used actions defined", ->
-      expect(@router.registration).toBeDefined()
-      epxect(@router.survey).toBeDefined()
-      expect(@router.result).toBeDefined()
+      expect(@router.registration()).toBeDefined()
+      expect(@router.survey()).toBeDefined()
+      expect(@router.result()).toBeDefined()
 
     describe "registration", ->
       it "should create the user view", ->

@@ -14,17 +14,17 @@ class FancySurvey.Models.User extends Backbone.Model
     url: "Text"
 
   initialize: ->
+    @fs = 'fancy_survey'
 
   startTime: ->
-    fs = 'fancy_survey'
-    if window.name != fs
-      window.name = fs
+    if window.name != @fs
+      window.name = @fs
       360
     else
-      parseInt(document.cookie) - 1 # suppose we loose 1 second on refreshing
+      parseInt($.cookie(@fs)) - 1 # suppose we loose 1 second on refreshing
 
   setTime: (time) ->
-    document.cookie = time
+    $.cookie(@fs, time)
 
 
 
