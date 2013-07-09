@@ -11,6 +11,7 @@ class FancySurvey.Models.User extends Backbone.Model
     movie_star: "Text"
     world_end: "Date"
     super_bowl_winner: "Text"
+    url: "Text"
 
   initialize: ->
 

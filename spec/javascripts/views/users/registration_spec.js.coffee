@@ -5,7 +5,7 @@ describe 'FancySurvey.Views.User.Registration', ->
     loadFixtures 'user_registration_view.html'
     model = new FancySurvey.Models.User
     timer_view = new FancySurvey.Views.User.Timer(model: model)
-    registration = new FancySurvey.Views.User.Registration({ model: model, timer: timer_view })
+    registration = new FancySurvey.Views.User.Registration(model: model, timer: timer_view)
 
   describe "rendering", ->
     it 'fills with 5 fields', ->
