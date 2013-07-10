@@ -16,8 +16,7 @@ describe 'FancySurvey.Views.User.Registration', ->
         @time = parseInt($('#timer h1').text())
       waits(1000)
       runs ->
-        @after = parseInt($('#timer h1').text())
-        expect(@time).toBeGreaterThan(@after)
+        expect(@time).toBeGreaterThan(parseInt($('#timer h1').text()))
 
   describe "#save", ->
 
