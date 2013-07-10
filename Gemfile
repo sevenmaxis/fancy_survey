@@ -19,6 +19,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'backbone-on-rails'
   gem 'eco'
+  gem 'haml_assets'
 end
 
 group :development, :test do

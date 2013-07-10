@@ -1,33 +1,41 @@
 describe 'FancySurvey.Views.User.Registration', ->
-  registration = null
 
   beforeEach ->
-    loadFixtures 'user_registration_view.html'
+    loadFixtures 'user_view.html'
     model = new FancySurvey.Models.User
-    timer_view = new FancySurvey.Views.User.Timer(model: model)
-    registration = new FancySurvey.Views.User.Registration(model: model, timer: timer_view)
+    @registration = new FancySurvey.Views.User.Registration(model: model)
+    @registration.render()
+    @registration.tick() # to force render timer
 
   describe "rendering", ->
     it 'fills with 5 fields', ->
       expect($('.field').length).toEqual 5
 
+    it 'ticks the time', ->
+      runs ->
+        @time = parseInt($('#timer h1').text())
+      waits(1000)
+      runs ->
+        @after = parseInt($('#timer h1').text())
+        expect(@time).toBeGreaterThan(@after)
+
   describe "#save", ->
 
     it "triggers event", ->
-      spyOn(registration, 'save')
-      registration.delegateEvents()
+      spyOn(@registration, 'save')
+      @registration.delegateEvents()
       $('.save').click()
-      expect(registration.save).toHaveBeenCalled()
+      expect(@registration.save).toHaveBeenCalled()
 
     it "saves model if not expired", ->
-      spyOn(registration.timer, 'expired').andReturn(false)
-      spyOn(registration.model, 'save')
+      spyOn(@registration.model, 'timeRemains').andReturn(100)
+      spyOn(@registration.model, 'save')
       $('.save').click()
-      expect(registration.model.save).toHaveBeenCalled()
+      expect(@registration.model.save).toHaveBeenCalled()
 
     it "not save model if expired", ->
-      spyOn(registration.timer, 'expired').andReturn(true)
-      spyOn(registration.model, 'save')
+      spyOn(@registration.model, 'timeRemains').andReturn('EXPIRED')
+      spyOn(@registration.model, 'save')
       $('.save').click()
-      expect(registration.model.save).not.toHaveBeenCalled()
+      expect(@registration.model.save).not.toHaveBeenCalled()
 

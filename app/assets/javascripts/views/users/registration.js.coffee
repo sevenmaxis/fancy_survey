@@ -1,23 +1,12 @@
-class FancySurvey.Views.User.Registration extends Backbone.View
-  el: '#main'
-  template: JST['templates/users/registration']
-
-  events:
-    'click .save': 'save'
-
-  initialize: (options) ->
-    @timer = options.timer
+class FancySurvey.Views.User.Registration extends FancySurvey.Views.User.Base
+  template: JST['users/registration']
 
   save: ->
-    if not @timer.expired()
+    if @model.timeRemains() > 0
       @model.save {},
         error: (model, response) ->
           console.log response.responseText
 
   render: ->
-    @$el.html @template
+    @$el.html @template user: @model
     @
-
-
-
-    
