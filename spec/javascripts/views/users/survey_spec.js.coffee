@@ -14,10 +14,8 @@ describe 'FancySurvey.Views.User.Survey', ->
     it 'ticks the time', ->
       runs ->
         @time = parseInt($('#timer h1').text())
-        console.log(@time)
       waits(1000)
       runs ->
-        console.log(parseInt($('#timer h1').text()))
         expect(@time).toBeGreaterThan(parseInt($('#timer h1').text()))
 
   describe '#save', ->
