@@ -1,9 +1,6 @@
 describe 'FancySurvey.Models.User', ->
 
   beforeEach ->
-    @fs = 'fancy_survey'
-    window.name = ''
-    document.cookie['fancy_survey'] = ''
     @user = new FancySurvey.Models.User
 
   describe '#initialize', ->
@@ -11,17 +8,29 @@ describe 'FancySurvey.Models.User', ->
       expect(@user).toBeDefined()
 
   describe '#startTime', ->
-    it 'returns default start time', ->
-      expect(@user.startTime()).toEqual 360
+    it "returns start time", ->
+      currentTime = Math.round(new Date().getTime()/1000)
+      expect(@user.startTime()).toEqual currentTime
 
-    it 'returns current time', ->
-      window.name = @fs
-      document.cookie['fancy_survey'] = 40
-      $.cookie(@fs, 40)
-      expect(@user.startTime()).toEqual 39
+  describe '#timeRemains', ->
+    it "changes time", ->
+      time = @user.timeRemains()
 
-  describe '#setTime', ->
-    it "sets time", ->
-      @user.setTime(100)
-      expect($.cookie(@fs)).toEqual '100'
+      @_Date = Date
+      testContext = @
+      time = new Date().getTime() + 400
+      spyOn(window, "Date").andCallFake ->
+        new testContext._Date(time)
+      
+      expect(@user.timeRemains()).toBeLessThan(time)
+
+    it "returns expired when time's up", ->
+      @_Date = Date
+      testContext = @
+      time = new Date().getTime() + 400000
+      spyOn(window, "Date").andCallFake ->
+        new testContext._Date(time)
+      
+      expect(@user.timeRemains()).toEqual 'EXPIRED'
+
 

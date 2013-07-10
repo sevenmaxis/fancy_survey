@@ -15,16 +15,18 @@ class FancySurvey.Models.User extends Backbone.Model
 
   initialize: ->
     @fs = 'fancy_survey'
+    window.name = @fs
+    $.cookie(@fs, @currentTime())
+
+  timeRemains: ->
+    time = 360 - @currentTime() + @startTime()
+    if time > 0 then time else 'EXPIRED'
+
+  currentTime: ->
+    Math.round(new Date().getTime()/1000)
 
   startTime: ->
-    if window.name != @fs
-      window.name = @fs
-      360
-    else
-      parseInt($.cookie(@fs)) - 1 # suppose we loose 1 second on refreshing
-
-  setTime: (time) ->
-    $.cookie(@fs, time)
+    parseInt($.cookie(@fs))
 
 
 
