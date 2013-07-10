@@ -14,22 +14,16 @@ describe 'FancySurvey.Models.User', ->
 
   describe '#timeRemains', ->
     it "changes time", ->
-      time = @user.timeRemains()
+      user_time = @user.timeRemains()
 
-      @_Date = Date
-      testContext = @
-      time = new Date().getTime() + 400
-      spyOn(window, "Date").andCallFake ->
-        new testContext._Date(time)
+      time = new Date().getTime() + 4000
+      spyOn(window, "Date").andReturn {getTime: -> time}
       
-      expect(@user.timeRemains()).toBeLessThan(time)
+      expect(@user.timeRemains()).toBeLessThan(user_time)
 
     it "returns expired when time's up", ->
-      @_Date = Date
-      testContext = @
       time = new Date().getTime() + 400000
-      spyOn(window, "Date").andCallFake ->
-        new testContext._Date(time)
+      spyOn(window, "Date").andReturn {getTime: -> time}
       
       expect(@user.timeRemains()).toEqual 'EXPIRED'
 
