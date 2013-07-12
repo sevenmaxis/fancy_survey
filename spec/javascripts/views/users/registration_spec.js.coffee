@@ -8,8 +8,8 @@ describe 'FancySurvey.Views.User.Registration', ->
     @registration.tick() # to force render timer
 
   describe "rendering", ->
-    it 'fills with 5 fields', ->
-      expect($('.field').length).toEqual 5
+    it 'fills with 6 fields', ->
+      expect($('input[type=text]').length).toEqual 6
 
     it 'ticks the time', ->
       runs ->
