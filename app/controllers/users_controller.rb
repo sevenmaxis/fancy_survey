@@ -39,11 +39,6 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    puts "@user #{@user.inspect}"
-    puts "valid? #{@user.valid?}"
-    puts "birthday #{@user.birthday.class}"
-    puts "birthday #{@user.birthday}"
-    puts "exists: #{User.find_by_email('test@test.com')}"
 
     respond_to do |format|
       if @user.save
