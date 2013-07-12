@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  date_params :birthday, :world_end
+
   # GET /users
   # GET /users.json
   def index
@@ -32,15 +35,15 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1/edit
-  def edit
-    @user = User.find(params[:id])
-  end
-
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    @user = User.new(params[:user])
+    puts "@user #{@user.inspect}"
+    puts "valid? #{@user.valid?}"
+    puts "birthday #{@user.birthday.class}"
+    puts "birthday #{@user.birthday}"
+    puts "exists: #{User.find_by_email('test@test.com')}"
 
     respond_to do |format|
       if @user.save
@@ -59,7 +62,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(user_params)
+      if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -81,12 +84,4 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-
-    # Use this method to whitelist the permissible parameters. Example:
-    # params.require(:person).permit(:name, :age)
-    # Also, you can specialize this method with per-user checking of permissible attributes.
-    def user_params
-      params.require(:user).permit(:birthday, :email, :first_name, :ice_cream, :movie_star, :second_name, :shoe_size, :super_bowl_winner, :superhero, :world_end)
-    end
 end

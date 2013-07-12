@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
-gem 'strong_parameters'
 gem 'sqlite3'
 gem 'thin'
 gem 'backbone-forms-rails'
 gem 'jquery-cookie-rails',
     :git => 'git@github.com:sevenmaxis/jquery-cookie-rails.git',
     :branch => 'use_submodule'
+gem 'date_params'
 
 
 # Gems used only for assets and not required
@@ -31,6 +31,8 @@ group :test do
   gem 'factory_girl_rails'
   gem 'spin'
   gem 'guard-spin'
+  gem 'vcr'
+  gem "capybara-webkit"
 end
 
 # To use ActiveModel has_secure_password

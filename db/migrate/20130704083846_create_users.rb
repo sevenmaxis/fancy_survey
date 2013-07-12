@@ -11,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :movie_star
       t.date :world_end
       t.string :super_bowl_winner
+      t.string :image_url
 
       t.timestamps
     end

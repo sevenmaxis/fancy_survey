@@ -23,7 +23,13 @@ describe UsersController do
   # This should return the minimal set of attributes required to create a valid
   # User. As you add validations to User, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "first_name" => "MyString" } }
+  let(:valid_attributes) { { 
+    "first_name" => "MyString", 
+    "second_name" => "MyString",
+    "email" => "test@test.com",
+    "birthday" => 10.days.since,
+    "shoe_size" => "54"
+  } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -53,15 +59,16 @@ describe UsersController do
     end
   end
 
-  describe "GET edit" do
-    it "assigns the requested user as @user" do
-      user = User.create! valid_attributes
-      get :edit, {:id => user.to_param}, valid_session
-      assigns(:user).should eq(user)
-    end
-  end
-
   describe "POST create" do
+
+    let(:valid_attributes) { { 
+      "first_name" => "MyString", 
+      "second_name" => "MyString",
+      "email" => "test@test.com",
+      "birthday" => "2008-05-21",
+      "shoe_size" => "54"
+    } }
+    
     describe "with valid params" do
       it "creates a new User" do
         expect {
@@ -76,8 +83,10 @@ describe UsersController do
       end
 
       it "redirects to the created user" do
+        puts "-"*50
+        puts "valid_attributes #{valid_attributes}"
         post :create, {:user => valid_attributes}, valid_session
-        response.should redirect_to(User.last)
+        response.status.should == 201
       end
     end
 
@@ -88,17 +97,19 @@ describe UsersController do
         post :create, {:user => { "first_name" => "invalid value" }}, valid_session
         assigns(:user).should be_a_new(User)
       end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        User.any_instance.stub(:save).and_return(false)
-        post :create, {:user => { "first_name" => "invalid value" }}, valid_session
-        response.should render_template("new")
-      end
     end
   end
 
   describe "PUT update" do
+
+    let(:valid_attributes) { { 
+      "first_name" => "MyString", 
+      "second_name" => "MyString",
+      "email" => "test@test.com",
+      "birthday" => {:year => '2008', :month => '11', :day => '22'},
+      "shoe_size" => "54"
+    } }
+
     describe "with valid params" do
       it "updates the requested user" do
         user = User.create! valid_attributes
@@ -116,10 +127,11 @@ describe UsersController do
         assigns(:user).should eq(user)
       end
 
-      it "redirects to the user" do
+      it "update the user" do
+        valid_attributes[:birthday] = 10.days.since
         user = User.create! valid_attributes
         put :update, {:id => user.to_param, :user => valid_attributes}, valid_session
-        response.should redirect_to(user)
+        response.status.should == 204
       end
     end
 
@@ -131,18 +143,19 @@ describe UsersController do
         put :update, {:id => user.to_param, :user => { "first_name" => "invalid value" }}, valid_session
         assigns(:user).should eq(user)
       end
-
-      it "re-renders the 'edit' template" do
-        user = User.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        User.any_instance.stub(:save).and_return(false)
-        put :update, {:id => user.to_param, :user => { "first_name" => "invalid value" }}, valid_session
-        response.should render_template("edit")
-      end
     end
   end
 
   describe "DELETE destroy" do
+    
+    let(:valid_attributes) { { 
+      "first_name" => "MyString", 
+      "second_name" => "MyString",
+      "email" => "test@test.com",
+      "birthday" => {:year => '2008', :month => '11', :day => '22'},
+      "shoe_size" => "54"
+    } }
+
     it "destroys the requested user" do
       user = User.create! valid_attributes
       expect {
@@ -150,10 +163,10 @@ describe UsersController do
       }.to change(User, :count).by(-1)
     end
 
-    it "redirects to the users list" do
+    it "destroys to the user" do
       user = User.create! valid_attributes
       delete :destroy, {:id => user.to_param}, valid_session
-      response.should redirect_to(users_url)
+      response.status.should == 204
     end
   end
 
