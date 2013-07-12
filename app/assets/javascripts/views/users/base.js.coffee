@@ -16,6 +16,3 @@ class FancySurvey.Views.User.Base extends Backbone.View
         error: (model, response) ->
           console.log response.responseText
 
-  render: ->
-    @$el.html @template user: @model
-    @    

@@ -5,6 +5,7 @@ class FancySurvey.Models.User extends Backbone.Model
     first_name: "Text"
     second_name: "Text"
     birthday: "Date"
+    email: "Text"
     show_size: "Text"
     ice_cream: "Text"
     superhero: "Text"

@@ -1,6 +1,7 @@
 describe "routers/Users", ->
 
   it "should be defined", ->
+    Backbone.history.stop()
     expect(FancySurvey.Routers.User).toBeDefined()
 
   it "can be instantiated", ->

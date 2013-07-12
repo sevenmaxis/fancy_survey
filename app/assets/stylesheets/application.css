@@ -10,5 +10,5 @@
  *
  *= require_self
  *= require_tree .
- *= require backbone-forms-rails
+ *= require backbone-forms
  */
