@@ -1,6 +1,7 @@
 describe 'FancySurvey.Models.User', ->
 
   beforeEach ->
+    window.name = ''
     @user = new FancySurvey.Models.User
 
   describe '#initialize', ->
