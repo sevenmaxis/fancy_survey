@@ -3,14 +3,17 @@ class FancySurvey.Models.User extends Backbone.Model
 
   initialize: ->
     @fs = 'fancy_survey'
-    @id = 'id'
-    unless window.name == @fs
+    @_id = 'id'
+    if window.name == @fs
+      @restoreId()
+    else
       window.name = @fs
-      $.cookie @fs, @currentTime()
+      @clearId()
+      @saveTime()
 
   timeRemains: ->
     # for debug purpose 360 -> 3600
-    time = 3600 - @currentTime() + @startTime()
+    time = 360 - @currentTime() + @startTime()
     if time > 0 then time else 'EXPIRED'
 
   currentTime: ->
@@ -19,11 +22,19 @@ class FancySurvey.Models.User extends Backbone.Model
   startTime: ->
     parseInt $.cookie(@fs)
 
-  setId: (id)->
-    $.cookie @id, id
+  persistId: ->
+    $.cookie @_id, @id
 
-  getId: ->
-    $.cookie @id
+  restoreId: ->
+    cookie = $.cookie(@_id)
+    @set 'id', parseInt(cookie) if cookie
+    console.log cookie if cookie
+
+  clearId: ->
+    $.removeCookie @_id
+
+  saveTime: ->
+    $.cookie @fs, @currentTime()
 
 
 

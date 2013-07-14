@@ -1,17 +1,29 @@
 class FancySurvey.Views.User.Registration extends FancySurvey.Views.User.Base
   template: JST['users/registration']
 
+  initialize: ->
+    @model.clearId()
+    super()
+
+  save: ->
+    console.log "registration"
+    super('survey', 'birthday')
+
   render: ->
-    form = new Backbone.Form(
+    @form = new Backbone.Form(
       model: @model
       schema:
-        first_name: "Text"
-        second_name: "Text"
-        email: "Text"
+        first_name: 
+          validators: ['required']
+        second_name:
+          validators: ['required']
+        email: 
+          validators: ["required", "email"]
         birthday: "Date"
-        show_size: "Text"
+        shoe_size:
+          validators: ['required']
     ).render()
     @$el.html @template user: @model
-    $('#form').html form.el
-    @    
+    $('#form').html @form.el
+    @
 

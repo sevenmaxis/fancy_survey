@@ -8,5 +8,6 @@ window.FancySurvey =
     Backbone.history.start()
 
 $(document).ready ->
+  $.ajaxSetup cache: false
   FancySurvey.init()
   
