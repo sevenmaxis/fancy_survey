@@ -1,14 +1,16 @@
 class FancySurvey.Models.User extends Backbone.Model
-  url: '/users'
+  urlRoot: '/users'
 
   initialize: ->
     @fs = 'fancy_survey'
+    @id = 'id'
     unless window.name == @fs
       window.name = @fs
       $.cookie @fs, @currentTime()
 
   timeRemains: ->
-    time = 360 - @currentTime() + @startTime()
+    # for debug purpose 360 -> 3600
+    time = 3600 - @currentTime() + @startTime()
     if time > 0 then time else 'EXPIRED'
 
   currentTime: ->
@@ -16,6 +18,12 @@ class FancySurvey.Models.User extends Backbone.Model
 
   startTime: ->
     parseInt $.cookie(@fs)
+
+  setId: (id)->
+    $.cookie @id, id
+
+  getId: ->
+    $.cookie @id
 
 
 

@@ -28,4 +28,10 @@ describe 'FancySurvey.Models.User', ->
       
       expect(@user.timeRemains()).toEqual 'EXPIRED'
 
+  describe '#setId and #getId', ->
+    it "persits model id", ->
+      id = '123'
+      @user.setId id
+      expect(@user.getId()).toEqual id
+
 
